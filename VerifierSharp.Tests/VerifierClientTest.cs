@@ -27,6 +27,28 @@ namespace VerifierSharp.Tests
             Assert.IsNull(response.Error);
         }
 
+        // This test requires an API key to run
+        [Ignore]
+        [TestMethod]
+        public void TestBadEmail_ReturnsError()
+        {
+            VerifierClient client = new VerifierClient();
+            VerifierSettings settings = new VerifierSettings()
+            {
+                EmailAddress = "test@gmai.com",
+                ApiKey = string.Empty
+            };
+
+            VerifierResponse response = client.VerifyEmailAddressAsync(settings).Result;
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual(response.Status, false);
+            Assert.IsNull(response.Email);
+            Assert.IsNull(response.Domain);
+            Assert.AreEqual(response.Error.Code, 2);
+            Assert.AreEqual(response.Error.Message, "Disposable email address");
+        }
+
         [TestMethod]
         public void TestIncorrectSettings_ReturnsError()
         {
