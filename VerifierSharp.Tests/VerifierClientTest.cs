@@ -11,14 +11,8 @@ namespace VerifierSharp.Tests
         [TestMethod]
         public void TestValidSettings_ReturnsEmailAndDomain()
         {
-            VerifierClient client = new VerifierClient();
-            VerifierSettings settings = new VerifierSettings()
-            {
-                EmailAddress = "test@gmail.com",
-                ApiKey = string.Empty
-            };
-
-            VerifierResponse response = client.VerifyEmailAddressAsync(settings).Result;
+            VerifierClient client = new VerifierClient(string.Empty);
+            VerifierResponse response = client.VerifyEmailAddressAsync("test@gmail.com").Result;
 
             Assert.IsNotNull(response);
             Assert.AreEqual(response.Status, true);
@@ -32,14 +26,8 @@ namespace VerifierSharp.Tests
         [TestMethod]
         public void TestBadEmail_ReturnsError()
         {
-            VerifierClient client = new VerifierClient();
-            VerifierSettings settings = new VerifierSettings()
-            {
-                EmailAddress = "test@gmai.com",
-                ApiKey = string.Empty
-            };
-
-            VerifierResponse response = client.VerifyEmailAddressAsync(settings).Result;
+            VerifierClient client = new VerifierClient(string.Empty);
+            VerifierResponse response = client.VerifyEmailAddressAsync("test@gmai.com").Result;
 
             Assert.IsNotNull(response);
             Assert.AreEqual(response.Status, false);
@@ -50,16 +38,10 @@ namespace VerifierSharp.Tests
         }
 
         [TestMethod]
-        public void TestIncorrectSettings_ReturnsError()
+        public void TestWrongApiKey_ReturnsError()
         {
-            VerifierClient client = new VerifierClient();
-            VerifierSettings settings = new VerifierSettings()
-            {
-                EmailAddress = "test@gmail.com",
-                ApiKey = "api_key"
-            };
-
-            VerifierResponse response = client.VerifyEmailAddressAsync(settings).Result;
+            VerifierClient client = new VerifierClient("api_key");
+            VerifierResponse response = client.VerifyEmailAddressAsync("test@gmail.com").Result;
 
             Assert.IsNotNull(response);
             Assert.AreEqual(response.Status, false);
@@ -70,13 +52,13 @@ namespace VerifierSharp.Tests
         }
 
         [TestMethod]
-        public void TestNoSettings_ReturnsError()
+        public void TestNoApiKeyOrEmail_ReturnsError()
         {
-            VerifierClient client = new VerifierClient();
+            VerifierClient client = new VerifierClient(string.Empty);
 
             try
             {
-                VerifierResponse response = client.VerifyEmailAddressAsync(null).Result;
+                VerifierResponse response = client.VerifyEmailAddressAsync(string.Empty).Result;
             }
             catch (AggregateException ex)
             {

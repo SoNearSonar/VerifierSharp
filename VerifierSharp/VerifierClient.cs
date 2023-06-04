@@ -6,15 +6,21 @@ namespace VerifierSharp
     public class VerifierClient
     {
         private readonly string _url = "https://verifier.meetchopra.com/verify/";
+        private string _apiKey = string.Empty;
 
-        public async Task<VerifierResponse> VerifyEmailAddressAsync(VerifierSettings settings)
+        public VerifierClient(string apiKey)
         {
-            if (settings == null || settings.EmailAddress == null || settings.ApiKey == null)
+            _apiKey = apiKey;
+        }
+
+        public async Task<VerifierResponse> VerifyEmailAddressAsync(string emailAddress)
+        {
+            if (string.IsNullOrWhiteSpace(emailAddress) || string.IsNullOrWhiteSpace(_apiKey))
             {
                 throw new HttpRequestException("An email address and API key are required to use this method call");
             }
 
-            return await MakeAPICall<VerifierResponse>($"{_url}/{settings.EmailAddress}?token={settings.ApiKey}");
+            return await MakeAPICall<VerifierResponse>($"{_url}/{emailAddress}?token={_apiKey}");
         }
 
         private async Task<T> MakeAPICall<T>(string url)
