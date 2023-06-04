@@ -11,6 +11,9 @@
 ## Credits:
 [Meetvchopra](https://twitter.com/meetvchopra)
 
+## API Key
+You can get an API key to use with this project [here](https://verifier.meetchopra.com/)
+
 ## Usage:
 Checking an email address
 ```csharp
