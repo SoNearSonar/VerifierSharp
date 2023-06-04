@@ -5,6 +5,9 @@
 - Asynchronous method calls
 - Written in .NET 6.0
 
+## NuGet Package:
+[![VerifierSharp NuGet](https://img.shields.io/nuget/vpre/VerifierSharp?label=VerifierSharp&style=for-the-badge)](https://www.nuget.org/packages/VerifierSharp/)
+
 ## Credits:
 [Meetvchopra](https://twitter.com/meetvchopra)
 
