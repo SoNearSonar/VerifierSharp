@@ -18,3 +18,9 @@ VerifierSharp/obj/
 .vs/ProjectEvaluation/
 
 .vs/VerifierSharp/DesignTimeBuild/
+
+VerifierSharp.Tests/bin/Release/net6.0/
+
+VerifierSharp/bin/Debug/
+
+VerifierSharp/bin/Release/net6.0/

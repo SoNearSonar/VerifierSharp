@@ -4,6 +4,28 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>VerifierSharp</Title>
+    <Company>SoNearSonar</Company>
+    <Authors>SoNearSonar</Authors>
+    <Description>A client for Verifier's Web API, written in C#/NET</Description>
+    <PackageProjectUrl>https://github.com/SoNearSonar/VerifierSharp</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/SoNearSonar/VerifierSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>c#;net;email</PackageTags>
+    <PackageReleaseNotes>Initial release of VerifierSharp</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
